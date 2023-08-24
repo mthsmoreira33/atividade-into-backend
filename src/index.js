@@ -73,7 +73,7 @@ app.post('/login', async (req, res) => {
     loggedInUsers.push(user);
     isLogged = true;
 
-    return res.status(201).json({ message: 'Usuário logado.' })
+    return res.status(201).json({ message: 'Usuário logado.', data: user })
 });
 
 const requireLogin = (req, res, next) => {
@@ -106,7 +106,28 @@ app.post('/memo/:id', requireLogin, (req, res) => {
 
     memos.push(memo);
 
-   return res.status(201).json({ message: `Recado criado para o usuário => Nome: ${user.name} | Email: ${user.email }`});
+   return res.status(201).json({ message: `Recado criado para o usuário => Nome: ${user.name} | Email: ${user.email }`, data: memo});
+});
+
+app.put('/memo/:id/:memoId', requireLogin, (req, res) => {
+    const { id, memoId } = req.params;
+    const { title, description } = req.body;
+    const user = loggedInUsers.find((user) => user.id === Number(id));
+
+    if (!user) {
+      return res.status(403).json({ message: 'Usuário não está logado.' });
+    }
+
+    const memoIndex = memos.findIndex(memo => memo.id === Number(memoId));
+
+    if(memoIndex === -1) {
+        return res.status(404).json({ message: 'Recado não encontrado' });
+    }
+
+    memos[memoIndex].title = title;
+    memos[memoIndex].description = description;
+
+    return res.status(201).json({ message: 'Recado Atualizado.', data: memos })
 });
 
 app.listen(port, () => {

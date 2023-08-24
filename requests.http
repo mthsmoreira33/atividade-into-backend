@@ -30,3 +30,12 @@ Content-Type: application/json
     "title": "Teste",
     "description": "Teste"
 }
+
+###
+PUT {{url}}/memo/1/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Teste1",
+    "description": "Teste1"
+}
