@@ -39,3 +39,6 @@ Content-Type: application/json
     "title": "Teste1",
     "description": "Teste1"
 }
+
+###
+DELETE {{url}}/memo/1/1 HTTP/1.1

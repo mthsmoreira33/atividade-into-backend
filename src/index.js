@@ -130,6 +130,20 @@ app.put('/memo/:id/:memoId', requireLogin, (req, res) => {
     return res.status(201).json({ message: 'Recado Atualizado.', data: memos })
 });
 
+app.delete('/memo/:id/:memoId', requireLogin, (req, res) => {
+    const { id, memoId } = req.params;
+    const user = loggedInUsers.find((user) => user.id === Number(id));
+    const memoIndex = memos.findIndex(memo => memo.id === memoId);
+
+    if (!user) {
+      return res.status(403).json({ message: "Usuário não está logado." });
+    }
+
+    const deletedMemo = memos.splice(memoIndex, 1);
+
+    return res.status(200).json({ message: 'Recado excluído com sucesso', deletedMemo});
+})
+
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });
