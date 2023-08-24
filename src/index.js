@@ -5,6 +5,7 @@ const app = express();
 const port = 8080;
 
 const users = [];
+const memos = [];
 let isLogged = false;
 
 app.use(express.json());
@@ -79,6 +80,28 @@ const requireLogin = (req, res, next) => {
 
 app.get('/memo', requireLogin, (req, res) => {
     return res.status(200).json({ message: 'Rota de tarefas' });
+});
+
+app.post('/memo/:userId', requireLogin, (req, res) => {
+    const { userId } = req.params;
+    const { title, description } = req.body;
+
+    const user = users.find(user => user.id === Number(userId));
+
+    if(!user) {
+        return res.status(404).json({ message: 'Usuário não cadastrado' });
+    }
+
+    const memo = {
+        id: memos.length + 1,
+        title,
+        description,
+        userId
+    }
+
+    memos.push(memo);
+
+    return res.status(201).json({ message: `Recado criado para o usuário => Nome: ${user.name} | Email: ${user.email}`});
 });
 
 app.listen(port, () => {
