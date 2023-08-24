@@ -7,7 +7,6 @@ const port = 8080;
 const users = [];
 const memos = [];
 const loggedInUsers = [];
-let isLogged = false;
 
 app.use(express.json());
 
@@ -71,13 +70,12 @@ app.post('/login', async (req, res) => {
     }
 
     loggedInUsers.push(user);
-    isLogged = true;
 
     return res.status(201).json({ message: 'Usuário logado.', data: user })
 });
 
 const requireLogin = (req, res, next) => {
-    if(isLogged) {
+    if(loggedInUsers.length !== 0) {
         next();
     } else {
         return res.status(401).json({ message: 'Acesso não autorizado.' });
@@ -109,7 +107,6 @@ app.put("/user/:id", requireLogin, async (req, res) => {
 
 app.delete('/logout', requireLogin, (req, res) => {
     loggedInUsers.pop();
-    isLogged = false;
     return res.status(200).json({ message: 'Usuário deslogado.', data: loggedInUsers });
 })
 
