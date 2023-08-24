@@ -42,3 +42,21 @@ Content-Type: application/json
 
 ###
 DELETE {{url}}/memo/1/1 HTTP/1.1
+
+###
+PUT {{url}}/user/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "oldPassword": "123",
+    "newPassword": "321"
+}
+
+###
+POST {{url}}/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "mthsmoreira59@gmail.com",
+    "password": "321"
+}

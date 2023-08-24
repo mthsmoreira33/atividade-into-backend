@@ -84,6 +84,29 @@ const requireLogin = (req, res, next) => {
     }
 }
 
+app.put("/user/:id", requireLogin, async (req, res) => {
+  const { id } = req.params;
+  const { oldPassword, newPassword } = req.body;
+
+  if (!oldPassword || !newPassword) {
+    return res.status(400).json({ message: "Senha não informada." });
+  }
+
+  const loggedUser = loggedInUsers.find((user) => user.id === Number(id));
+
+  const passwordMatch = await bcrypt.compare(oldPassword, loggedUser.password);
+
+  if (!loggedUser || !passwordMatch) {
+    return res.status(400).json({ message: "Email/Senha inválidos" });
+  }
+
+  const newHashedPassword = await bcrypt.hash(newPassword, 10);
+
+  loggedUser.password = newHashedPassword;
+
+  return res.status(201).json({ message: 'Usuário atualizado.', data: loggedUser});
+});
+
 app.get('/memo', requireLogin, (req, res) => {
     return res.status(200).json({ message: 'Rota de tarefas' });
 });
