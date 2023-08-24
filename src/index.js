@@ -6,6 +6,7 @@ const port = 8080;
 
 const users = [];
 const memos = [];
+const loggedInUsers = [];
 let isLogged = false;
 
 app.use(express.json());
@@ -48,6 +49,10 @@ app.post('/user', async (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
+    if (loggedInUsers.length >= 1) {
+        return res.status(400).json({ message: 'Você já está logado!' })
+    }
+
     const { email, password } = req.body;
     const user = users.find(user => user.email === email);
 
@@ -56,7 +61,7 @@ app.post('/login', async (req, res) => {
     }
 
     if(!password) {
-        return res.status(400).json({ message: 'Senha não informada.' })
+        return res.status(400).json({ message: 'Senha não informada.' });
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
@@ -65,6 +70,7 @@ app.post('/login', async (req, res) => {
       return res.status(404).json({ message: 'Email/Senha incorretos.' });
     }
 
+    loggedInUsers.push(user);
     isLogged = true;
 
     return res.status(201).json({ message: 'Usuário logado.' })
@@ -82,28 +88,29 @@ app.get('/memo', requireLogin, (req, res) => {
     return res.status(200).json({ message: 'Rota de tarefas' });
 });
 
-app.post('/memo/:userId', requireLogin, (req, res) => {
-    const { userId } = req.params;
+app.post('/memo/:id', requireLogin, (req, res) => {
+    const { id } = req.params;
     const { title, description } = req.body;
-
-    const user = users.find(user => user.id === Number(userId));
+    const user = loggedInUsers.find(user => user.id === Number(id));
 
     if(!user) {
-        return res.status(404).json({ message: 'Usuário não cadastrado' });
+        return res.status(403).json({ message: 'Usuário não está logado.' })
     }
 
     const memo = {
         id: memos.length + 1,
         title,
         description,
-        userId
+        userId: loggedInUsers.id
     }
 
     memos.push(memo);
 
-    return res.status(201).json({ message: `Recado criado para o usuário => Nome: ${user.name} | Email: ${user.email}`});
+   return res.status(201).json({ message: `Recado criado para o usuário => Nome: ${user.name} | Email: ${user.email }`});
 });
 
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });
+
+
