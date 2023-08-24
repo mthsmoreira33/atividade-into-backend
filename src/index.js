@@ -5,6 +5,7 @@ const app = express();
 const port = 8080;
 
 const users = [];
+let isLogged = false;
 
 app.use(express.json());
 
@@ -45,7 +46,30 @@ app.post('/user', async (req, res) => {
     return res.status(201).json({ message: 'Usuário criado.' });
 });
 
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+    const user = users.find(user => user.email === email);
 
+    if(!email) {
+        return res.status(400).json({ message: 'Email não informado.' });
+    }
+
+    if(!password) {
+        return res.status(400).json({ message: 'Senha não informada.' })
+    }
+
+
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!user || !passwordMatch) {
+      return res.status(404).json({ message: 'Email/Senha incorretos.' });
+    }
+
+    isLogged = true;
+
+    return res.status(201).json({ message: 'Usuário logado.' })
+})
 
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
