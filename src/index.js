@@ -58,8 +58,6 @@ app.post('/login', async (req, res) => {
         return res.status(400).json({ message: 'Senha não informada.' })
     }
 
-
-
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!user || !passwordMatch) {
@@ -69,7 +67,15 @@ app.post('/login', async (req, res) => {
     isLogged = true;
 
     return res.status(201).json({ message: 'Usuário logado.' })
-})
+});
+
+const requireLogin = (req, res, next) => {
+    if(isLogged) {
+        next();
+    } else {
+        return res.status(401).json({ message: 'Acesso não autorizado.' })
+    }
+}
 
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
