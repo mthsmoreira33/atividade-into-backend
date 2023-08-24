@@ -60,3 +60,6 @@ Content-Type: application/json
     "email": "mthsmoreira59@gmail.com",
     "password": "321"
 }
+
+###
+DELETE {{url}}/logout HTTP/1.1

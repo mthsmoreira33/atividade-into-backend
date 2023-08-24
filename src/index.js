@@ -107,6 +107,12 @@ app.put("/user/:id", requireLogin, async (req, res) => {
   return res.status(201).json({ message: 'Usuário atualizado.', data: loggedUser});
 });
 
+app.delete('/logout', requireLogin, (req, res) => {
+    loggedInUsers.pop();
+    isLogged = false;
+    return res.status(200).json({ message: 'Usuário deslogado.', data: loggedInUsers });
+})
+
 app.get('/memo', requireLogin, (req, res) => {
     return res.status(200).json({ message: 'Rota de tarefas' });
 });
