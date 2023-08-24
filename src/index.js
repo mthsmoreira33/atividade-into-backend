@@ -73,9 +73,13 @@ const requireLogin = (req, res, next) => {
     if(isLogged) {
         next();
     } else {
-        return res.status(401).json({ message: 'Acesso não autorizado.' })
+        return res.status(401).json({ message: 'Acesso não autorizado.' });
     }
 }
+
+app.get('/memo', requireLogin, (req, res) => {
+    return res.status(200).json({ message: 'Rota de tarefas' });
+});
 
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
