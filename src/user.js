@@ -70,4 +70,18 @@ userRoutes.put("/:id", requireLogin, async (req, res) => {
     .json({ message: "Usuário atualizado.", data: loggedUser });
 });
 
+userRoutes.delete('/:id', requireLogin, (req, res) => {
+    const { id } = req.params;
+    const userIndex = loggedInUsers.findIndex(user => user.id === Number(id));
+
+    if(userIndex === -1) {
+        return res.status(403).json({ message: 'Você não pode deletar outro usuário.' });
+    }
+
+    users.splice(userIndex, 1);
+    loggedInUsers.pop();
+
+    return res.status(200).json({ message: 'Usuário deletado com sucesso.' });
+})
+
 export { userRoutes };
