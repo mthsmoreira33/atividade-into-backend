@@ -1,4 +1,4 @@
-@url = http://localhost:8080
+@url = https://atividade-into-backend.onrender.com
 GET {{url}} HTTP/1.1
 ###
 POST {{url}}/user HTTP/1.1
