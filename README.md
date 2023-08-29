@@ -5,10 +5,10 @@ API Back End de CRUD (Create, Read, Delete and Update) de recados (referidos no 
 
 ## Tecnologias aprendidas:
 
--HTTP
--Express JS
--Node JS
+-HTTP \
+-Express JS \
+-Node JS \
 
-##Link do web service:
+## Link do web service:
 
 https://atividade-into-backend.onrender.com
