@@ -1,0 +1,193 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Atividade final back end",
+    "dateExported": "2023-08-29T17:17:21.769Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "e2bad56a-87ea-49be-83f7-ad4420e02b21",
+            "colId": "21a58361-d319-46c8-8b28-4db50efdb6e5",
+            "containerId": "",
+            "name": "Get rota principal",
+            "url": "https://atividade-into-backend.onrender.com/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-08-28T19:24:18.138Z",
+            "modified": "2023-08-28T19:36:20.723Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3d5993ce-fc80-4dd4-aa25-dc6e3f7a02f6",
+            "colId": "21a58361-d319-46c8-8b28-4db50efdb6e5",
+            "containerId": "",
+            "name": "POST usuário 1",
+            "url": "https://atividade-into-backend.onrender.com/user",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-08-28T19:38:46.158Z",
+            "modified": "2023-08-28T19:39:27.011Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"name\": \"Matheus\",\n    \"email\": \"mthsmoreira59@gmail.com\",\n    \"password\": \"123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f25961e5-117b-4c91-a749-a86d929c54f5",
+            "colId": "21a58361-d319-46c8-8b28-4db50efdb6e5",
+            "containerId": "",
+            "name": "POST usuário 2",
+            "url": "https://atividade-into-backend.onrender.com/user",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-08-28T22:09:27.562Z",
+            "modified": "2023-08-28T22:11:20.333Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"name\": \"John\",\n    \"email\": \"johndoe@gmail.com\",\n    \"password\": \"222\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "3296d3b1-a708-4984-9c9f-af82ba2cb9d3",
+            "colId": "21a58361-d319-46c8-8b28-4db50efdb6e5",
+            "containerId": "",
+            "name": "POST login",
+            "url": "https://atividade-into-backend.onrender.com/login",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-08-28T22:12:03.404Z",
+            "modified": "2023-08-29T17:16:31.978Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"email\": \"mthsmoreira59@gmail.com\",\n    \"password\": \"321\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "8e86aa2d-4c6d-4d5b-9240-f1818945d72e",
+            "colId": "21a58361-d319-46c8-8b28-4db50efdb6e5",
+            "containerId": "",
+            "name": "GET recados",
+            "url": "https://atividade-into-backend.onrender.com/memo",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-08-29T17:06:16.438Z",
+            "modified": "2023-08-29T17:06:28.136Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "7b857719-5a75-4294-825f-2b2df5b1ba73",
+            "colId": "21a58361-d319-46c8-8b28-4db50efdb6e5",
+            "containerId": "",
+            "name": "POST recados",
+            "url": "https://atividade-into-backend.onrender.com/memo/1",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2023-08-29T17:06:41.409Z",
+            "modified": "2023-08-29T17:07:38.481Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"title\": \"Teste\",\n    \"description\": \"Teste\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "449d9f90-209f-4655-9a09-bf30a7a115cc",
+            "colId": "21a58361-d319-46c8-8b28-4db50efdb6e5",
+            "containerId": "",
+            "name": "PUT recado 1",
+            "url": "https://atividade-into-backend.onrender.com/memo/1/1",
+            "method": "PUT",
+            "sortNum": 90000,
+            "created": "2023-08-29T17:08:39.711Z",
+            "modified": "2023-08-29T17:08:55.465Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"title\": \"Teste1\",\n    \"description\": \"Teste1\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "29032fa1-a430-4ac1-a003-7b2e1f5b4f48",
+            "colId": "21a58361-d319-46c8-8b28-4db50efdb6e5",
+            "containerId": "",
+            "name": "DELETE recado 1",
+            "url": "https://atividade-into-backend.onrender.com/memo/1/1",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2023-08-29T17:11:12.495Z",
+            "modified": "2023-08-29T17:11:31.965Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "7438f152-80e2-4437-a704-fb7d60801bcb",
+            "colId": "21a58361-d319-46c8-8b28-4db50efdb6e5",
+            "containerId": "",
+            "name": "PUT usuário 1",
+            "url": "https://atividade-into-backend.onrender.com/user/1",
+            "method": "PUT",
+            "sortNum": 120000,
+            "created": "2023-08-29T17:12:43.267Z",
+            "modified": "2023-08-29T17:13:36.364Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"oldPassword\": \"123\",\n    \"newPassword\": \"321\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f70860db-34e9-41dc-9a2b-992cd9907a9a",
+            "colId": "21a58361-d319-46c8-8b28-4db50efdb6e5",
+            "containerId": "",
+            "name": "DELETE logout",
+            "url": "https://atividade-into-backend.onrender.com/logout",
+            "method": "DELETE",
+            "sortNum": 130000,
+            "created": "2023-08-29T17:14:39.461Z",
+            "modified": "2023-08-29T17:14:57.835Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "45f48084-cabf-4bc3-9a28-6bd8833b7fff",
+            "colId": "21a58361-d319-46c8-8b28-4db50efdb6e5",
+            "containerId": "",
+            "name": "DELETE usuário 1",
+            "url": "https://atividade-into-backend.onrender.com/user/1",
+            "method": "DELETE",
+            "sortNum": 140000,
+            "created": "2023-08-29T17:15:25.455Z",
+            "modified": "2023-08-29T17:15:50.609Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
