@@ -7,7 +7,7 @@ API Back End de CRUD (Create, Read, Delete and Update) de recados (referidos no 
 
 -HTTP \
 -Express JS \
--Node JS \
+-Node JS
 
 ## Link do web service:
 
